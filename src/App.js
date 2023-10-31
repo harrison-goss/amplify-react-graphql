@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import "@aws-amplify/ui-react/styles.css";
+//import "./App.css";
+//import "@aws-amplify/ui-react/styles.css";
 import { API } from "aws-amplify";
 import {
   Button,
@@ -16,6 +16,13 @@ import {
   createTodo as createNoteMutation,
   deleteTodo as deleteNoteMutation,
 } from "./graphql/mutations";
+
+
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+import { SignInHeader } from "./SignInHeader";
+import { SignInFooter } from "./SignInFooter";
+import "./loginStyles.css";
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
@@ -104,4 +111,8 @@ const App = ({ signOut }) => {
   );
 };
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, {
+  components: {
+    Header,
+  }
+});
